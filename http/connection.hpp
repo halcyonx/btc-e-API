@@ -44,7 +44,7 @@ public:
     {}
     ~connection() {}
     
-    void request(const request& r, const std::string& params, const headers_t& headers) {
+    void request(const request& r, const std::string& params = "", const headers_t& headers = headers_t()) {
         recv_data_.clear();
         recv_header_.clear();
         curl_easy_setopt( curl_object::get_instance(), CURLOPT_URL,         auth_page_.c_str() );
