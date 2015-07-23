@@ -121,7 +121,7 @@ public:
      * @example : std::string response = btc_api_object.order_info("782734")
      **/
     json_data order_info(const std::string& order) {
-        return this->call("OrderInfo", order);
+        return this->call("OrderInfo", "order_id=" + order);
     }
     
     /**
