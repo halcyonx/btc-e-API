@@ -1,3 +1,3 @@
-# btc-e-API
-C++ class for btc-e.com API
-btc-e.com API documentation: https://btc-e.com/tapi/docs
+# btc-e-API now wex.nz
+C++ class for ~btc-e.com~ wex.nz API
+wex.nz API documentation: https://wex.nz/tapi/docs

@@ -10,22 +10,22 @@ namespace btc_e {
 class pair {
 public:
     pair() {}
-    pair(const url& u): _url(_base_url + u), name_(u) {}
+    pair(const url& u): _url(_base_url), name_(u) {}
     virtual ~pair() {}
     
     virtual url fee() const {
-        return _url + "/fee";
+        return _url + "fee/" + name_;
     }
     virtual url ticker() const {
-        return _url + "/ticker";
+        return _url + "ticker/" + name_;
     }
     
     virtual url trades() const {
-        return _url + "/trades";
+        return _url + "trades/" + name_;
     }
     
     virtual url depth() const {
-        return _url + "/depth";
+        return _url + "depth/" + name_;
     }
     
     virtual std::string name() const {
@@ -37,7 +37,7 @@ private:
     url _url;
     std::string name_;
 };
-url pair::_base_url = "https://btc-e.com/api/2/";
+url pair::_base_url = "https://wex.nz/api/3/";
 
 class btc_usd: public pair {
 public:

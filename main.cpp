@@ -1,5 +1,7 @@
 #include "btc_api.hpp"
 
+// compile: g++ -std=c++11 main.cpp -lssl -lcrypto -lcurl
+
 int main(int argc, char **argv) {
     
     btc_api api("your_key", "your_secret");

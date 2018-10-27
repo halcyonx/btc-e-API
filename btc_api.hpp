@@ -36,12 +36,13 @@ std::string params(const std::string& str) {
 class btc_api: public uncopyable {
 public:
     btc_api(const std::string& key, const std::string& secret)
-        : nonce_(0), key_(key), secret_(secret), connection_("https://btc-e.com/tapi")
+        : nonce_(0), key_(key), secret_(secret), connection_("https://wex.nz/tapi")
     {}
     
     json_data call(const std::string& method, const std::string& p) {
         std::string params = "nonce=";
-        nonce_ = ::time(nullptr);
+        unsigned long n = ::time(nullptr);
+        nonce_ = (nonce_ == 0 ? n : nonce_ + 1);
         params.append(std::to_string(nonce_));
         params.append("&method=" + method);
         if (p.size() != 0) {
@@ -156,6 +157,7 @@ public:
      **/
     json_data trades(const btc_e::pair& p) {
         http::connection c(p.trades());
+        printf("%s\n", p.trades().c_str());
         c.request(http::post());
         return c.get_response();
     }
